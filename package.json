@@ -2,13 +2,13 @@
   "name": "test",
   "version": "1.0.0",
   "description": "Backend-For-The-Project",
-  "main": "dist/index.js",
+  "main": "api/index.js",
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",
-    "dev" : "concurrently -k \"tsc -w\" \"nodemon ./dist/index.js\"",
+    "dev" : "concurrently -k \"tsc -w\" \"nodemon ./api/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vicete Viera",

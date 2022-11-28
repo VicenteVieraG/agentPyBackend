@@ -6,7 +6,7 @@ import { type } from "os";
 const app: Express = express();
 const PORT: number = 8080;
 
-//Types
+// Types
 type coord = {
     x: number;
     y: number;

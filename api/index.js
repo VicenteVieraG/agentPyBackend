@@ -8,36 +8,23 @@ const child_process_1 = require("child_process");
 // Setup the Server
 const app = (0, express_1.default)();
 const PORT = 8080;
-// Define a route handler for the default home page
+// Default Route for Python
 app.get("/", (req, res) => {
     // Set Up Python
     const agentPy = (0, child_process_1.spawn)("python", ["./script/main.py"]);
-    let d;
     agentPy.stdout.on("data", data => {
         // tslint:disable-next-line:no-console
         console.log(data.toString());
-        d = data.toString();
+        res.send(data.toString());
     });
-    agentPy.on("close", code => {
+    agentPy.on("close", (code, args) => {
         // tslint:disable-next-line:no-console
-        console.log(`child process close all stdio with code ${code}`);
-        res.send(d);
+        console.log(`child process close all stdio with code: ${code} args: ${args}`);
     });
-    // res.send("Hola Crayola xd\n");
 });
 // start the Express server
 app.listen(PORT, () => {
     // tslint:disable-next-line:no-console
     console.log(`⚡server started at http://localhost:${PORT}`);
 });
-const steps = {
-    // iterations
-    "0": {
-        // Cars
-        "0": {
-            x: 777,
-            y: 777 // number
-        }
-    }
-};
 //# sourceMappingURL=index.js.map
